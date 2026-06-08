@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saransh Dhage — AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #00199e;
+  --cyan: #2ec1e0;
+  --dark: #111218;
+  --gray: #8a8fa8;
+  --light: #f4f5f9;
+  --white: #ffffff;
+  --card: #1a1d2e;
+  --bg: #111218;
+  --text: #ffffff;
+  --text-muted: #8a8fa8;
+  --card-bg: #1a1d2e;
+  --border: rgba(255,255,255,0.06);
+  --tag-bg: rgba(255,255,255,0.05);
+  --tag-border: rgba(255,255,255,0.1);
+  --tag-color: #8a8fa8;
+  --nav-bg: rgba(17,18,24,0.85);
+}
+body.light {
+  --bg: #f4f5f9;
+  --text: #111218;
+  --text-muted: #555a6e;
+  --card-bg: #ffffff;
+  --border: rgba(0,0,0,0.07);
+  --tag-bg: rgba(0,25,158,0.05);
+  --tag-border: rgba(0,25,158,0.15);
+  --tag-color: #00199e;
+  --nav-bg: rgba(244,245,249,0.85);
+  --gray: #555a6e;
+  --white: #111218;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 4rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--cyan); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  color: var(--text-muted); font-size: 0.85rem; text-decoration: none;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.theme-toggle {
+  background: none; border: 0.5px solid var(--border);
+  color: var(--text-muted); cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; transition: all 0.2s;
+}
+.theme-toggle:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,25,158,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -10%; left: 20%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(46,193,224,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { max-width: 760px; position: relative; z-index: 1; }
+.hero-tag {
+  display: inline-block;
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 1.5rem;
+  padding: 0.3rem 0.9rem;
+  border: 0.5px solid rgba(46,193,224,0.4);
+  border-radius: 2px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.hero h1 span { color: var(--cyan); }
+.hero-sub {
+  font-size: 1.05rem; color: var(--gray);
+  max-width: 520px; margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+.hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 500;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+.btn-primary {
+  background: var(--navy); color: var(--white);
+  border: 1px solid var(--navy);
+}
+.btn-primary:hover { background: #001ac7; }
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 0.5px solid rgba(255,255,255,0.2);
+}
+.btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* SECTIONS */
+section { padding: 6rem 4rem; }
+.section-label {
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400; margin-bottom: 3rem;
+  line-height: 1.2;
+}
+.divider {
+  width: 40px; height: 1px;
+  background: var(--cyan); margin-bottom: 3rem;
+}
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.9; max-width: 640px; }
+.about-text p + p { margin-top: 1rem; }
+.skills-grid { display: grid; gap: 1.2rem; }
+.skill-group { }
+.skill-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cyan); margin-bottom: 0.4rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag {
+  font-size: 0.78rem; padding: 0.25rem 0.65rem;
+  background: var(--tag-bg);
+  border: 0.5px solid var(--tag-border);
+  border-radius: 2px; color: var(--tag-color);
+  transition: background 0.3s;
+}
+
+/* EXPERIENCE */
+.exp-list { display: grid; gap: 0; }
+.exp-item {
+  display: grid; grid-template-columns: 160px 1fr;
+  gap: 2rem; padding: 2rem 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.exp-item:first-child { border-top: 0.5px solid var(--border); }
+.exp-date { font-size: 0.8rem; color: var(--text-muted); padding-top: 0.2rem; }
+.exp-company { color: var(--cyan); font-weight: 500; font-size: 0.95rem; margin-bottom: 0.15rem; }
+.exp-role { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.exp-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.project-card {
+  background: var(--card-bg);
+  border: 0.5px solid var(--border);
+  border-radius: 4px; padding: 2rem;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex; flex-direction: column;
+}
+.project-card:hover { border-color: rgba(46,193,224,0.3); transform: translateY(-2px); }
+.project-num { font-size: 0.7rem; color: var(--cyan); letter-spacing: 0.1em; margin-bottom: 1rem; }
+.project-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem; font-weight: 400;
+  margin-bottom: 0.75rem; line-height: 1.3;
+  color: var(--text);
+}
+.project-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; flex: 1; }
+.project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
+.stack-tag {
+  font-size: 0.72rem; padding: 0.2rem 0.55rem;
+  background: rgba(0,25,158,0.15);
+  border: 0.5px solid rgba(0,25,158,0.3);
+  border-radius: 2px; color: var(--cyan);
+}
+.project-links { display: flex; gap: 0.75rem; }
+.project-link {
+  font-size: 0.78rem; color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.project-link:hover { color: var(--cyan); border-color: var(--cyan); }
+
+.edu-card {
+  background: var(--card-bg);
+  border: 0.5px solid var(--border);
+  border-radius: 4px; padding: 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 640px;
+}
+.edu-uni { color: var(--cyan); font-weight: 500; margin-bottom: 0.25rem; }
+.edu-degree { font-size: 0.9rem; color: var(--text-muted); }
+.edu-year { font-size: 0.8rem; color: var(--text-muted); }
+
+.contact-wrap {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem;
+}
+.contact-email {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--text); text-decoration: none;
+  border-bottom: 1px solid rgba(46,193,224,0.3);
+  padding-bottom: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-email:hover { color: var(--cyan); border-color: var(--cyan); }
+.social-links { display: flex; gap: 1.5rem; }
+.social-link {
+  font-size: 0.82rem; color: var(--text-muted); text-decoration: none;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+.social-link:hover { color: var(--text); }
+
+footer {
+  padding: 2rem 4rem;
+  border-top: 0.5px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-text { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.7s forwards; }
+@keyframes fadeIn { to { opacity: 1; transform: none; } }
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.25s; }
+.fade-in:nth-child(3) { animation-delay: 0.4s; }
+.fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1.5rem; }
+  .hero, section { padding: 5rem 1.5rem 3rem; }
+  .hero { padding-top: 7rem; }
+  .about-grid, .projects-grid { grid-template-columns: 1fr; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">SD</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" id="themeBtn">☀</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    
+    <h1 class="fade-in">Saransh<br><span>Dhage</span></h1>
+    <p class="hero-sub fade-in">AI/ML Engineer building production-grade agentic systems, LLM pipelines, and ML models that solve real problems.</p>
+    <div class="hero-links fade-in">
+      <a href="mailto:saranshdhage@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="https://github.com/SaranshDhage" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://www.linkedin.com/in/saransh-dhage-116502217/" target="_blank" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="divider"></div>
+  <div class="about-text">
+      <p>I'm an AI/ML Engineer with 3 years of experience building production-grade agentic systems, LLM pipelines, and credit risk models. Currently at Cognext.ai, where I architect multi-agent systems using LangGraph and integrate Model Context Protocol (MCP) servers for enterprise clients.</p>
+      <p>Previously at Piramal Finance (credit risk ML) and AMD (GenAI pipelines). My work sits at the intersection of cutting-edge AI research and real-world deployment, building things that actually run in production.</p>
+      <p>I'm actively seeking AI/ML engineering roles in the Netherlands and Germany. Eligible for HSM visa with minimal overhead for recognised sponsors.</p>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="padding-top:0">
+  <div class="section-label">Experience</div>
+  <div class="divider"></div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">Oct 2025 — Present</div>
+      <div>
+        <div class="exp-company">Cognext.ai</div>
+        <div class="exp-role">AI Engineer · Remote, India</div>
+        <div class="exp-desc">Architecting production multi-agent systems with LangGraph, integrating MCP servers, and benchmarking frontier LLMs for enterprise AI deployments.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jul 2024 — Oct 2025</div>
+      <div>
+        <div class="exp-company">Piramal Finance</div>
+        <div class="exp-role">Data Scientist · Mumbai, India</div>
+        <div class="exp-desc">Built and deployed XGBoost credit risk models using CIBIL bureau data, cutting loan defaults by 30% and saving EUR 2M+ annually.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jul 2023 — Jun 2024</div>
+      <div>
+        <div class="exp-company">Advanced Micro Devices (AMD)</div>
+        <div class="exp-role">SDE Intern · Hyderabad, India</div>
+        <div class="exp-desc">Engineered GenAI pipelines using LangChain and LLMs for automated code analysis, and built IntelDoc, a RAG pipeline reducing document retrieval time by 60%.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="padding-top:0">
+  <div class="section-label">Skills</div>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-label">LLM & Agents</div>
+      <div class="skill-tags">
+        <span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">MCP</span><span class="tag">RAG</span><span class="tag">Anthropic SDK</span><span class="tag">OpenAI API</span><span class="tag">FAISS</span><span class="tag">Qdrant</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">ML & Infra</div>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span><span class="tag">XGBoost</span><span class="tag">Hugging Face</span><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">FastAPI</span><span class="tag">AWS</span><span class="tag">Kubernetes</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span><span class="tag">R</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding-top:0">
+  <div class="section-label">Projects</div>
+  <div class="divider"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-name">Weather Docs AI Assistant</div>
+      <div class="project-desc">An intelligent assistant combining document Q&A with real-time weather insights. Uses RAG with Qdrant vector search and Groq LLM for fast, context-aware responses.</div>
+      <div class="project-stack">
+        <span class="stack-tag">LangChain</span>
+        <span class="stack-tag">Groq LLM</span>
+        <span class="stack-tag">Qdrant</span>
+        <span class="stack-tag">Streamlit</span>
+        <span class="stack-tag">RAG</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/SaranshDhage/Weather-Docs-AI-Assistant" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-name">Financial News Summariser</div>
+      <div class="project-desc">General-purpose LLMs hallucinate on financial terminology. Fine-tuned Mistral-7B on financial news using QLoRA and PEFT, improving ROUGE-L by 28% with 65% less GPU memory. Served via FastAPI.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Mistral-7B</span>
+        <span class="stack-tag">QLoRA</span>
+        <span class="stack-tag">PEFT</span>
+        <span class="stack-tag">MLflow</span>
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">Docker</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/SaranshDhage" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="padding-top:0">
+  <div class="section-label">Education</div>
+  <div class="divider"></div>
+  <div class="edu-card">
+    <div>
+      <div class="edu-uni">KIIT University</div>
+      <div class="edu-degree">Bachelor of Technology in Computer Science</div>
+    </div>
+    <div class="edu-year">2020 — 2024</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top:0">
+  <div class="section-label">Contact</div>
+  <div class="divider"></div>
+  <div class="contact-wrap">
+    <a href="mailto:saranshdhage@gmail.com" class="contact-email">saranshdhage@gmail.com</a>
+    <div class="social-links">
+      <a href="https://github.com/SaranshDhage" target="_blank" class="social-link">GitHub</a>
+      <a href="https://www.linkedin.com/in/saransh-dhage-116502217/" target="_blank" class="social-link">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">Saransh Dhage · AI/ML Engineer · India</div>
+  <div class="footer-text">Open to relocation · Netherlands · Germany</div>
+</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  body.classList.toggle('light');
+  btn.textContent = body.classList.contains('light') ? '☾' : '☀';
+}
+</script>
+</body>
+</html>
